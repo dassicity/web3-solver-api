@@ -1,7 +1,7 @@
 const express = require("express");
 
 const { resolveEthInfo } = require("../controllers/ethController");
-const { resolveSolInfo } = require("../controllers/solController");
+const { resolveSolInfoDomain } = require("../controllers/solController");
 const { resolveBscInfo } = require("../controllers/bscController");
 
 const router = express.Router();
@@ -15,7 +15,7 @@ router.get("/resolve/:domain", async (req, res, next) => {
         response = await resolveEthInfo(domainName);
     }
     else if (domainName.endsWith(".sol")) {
-        response = await resolveSolInfo(domainName);
+        response = await resolveSolInfoDomain(domainName);
     }
     else if (domainName.endsWith(".bnb")) {
         response = await resolveBscInfo(domainName);
