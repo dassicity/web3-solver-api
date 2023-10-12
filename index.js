@@ -3,14 +3,16 @@ const express = require("express");
 const nameRoutes = require("./routes/resolveNameRoutes");
 const addressRoutes = require("./routes/resolveAddressRoutes");
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(express.json());
 
-const PORT = 1331;
+const PORT = process.env.PORT;
 
 app.use("/api/name", nameRoutes);
-app.use("api/address", addressRoutes);
+// app.use("api/address", addressRoutes);
 
 
 app.listen(PORT, () => {
